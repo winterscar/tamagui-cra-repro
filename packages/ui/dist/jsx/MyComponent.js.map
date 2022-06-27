@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/MyComponent.tsx"],
+  "sourcesContent": ["import { styled, YStack } from 'tamagui'\r\n\r\nexport const MyComponent = styled(YStack, {\r\n  name: 'MyComponent',\r\n  backgroundColor: 'red',\r\n})"],
+  "mappings": "AAAA;AAEO,MAAM,cAAc,OAAO,QAAQ;AAAA,EACxC,MAAM;AAAA,EACN,iBAAiB;AACnB,CAAC;",
+  "names": []
+}
