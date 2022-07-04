@@ -1,7 +1,6 @@
 const webpack = require('webpack')
 const { shouldExclude } = require('tamagui-loader')
 
-
 const NODE_ENV = process.env.NODE_ENV || 'development'
 const target = process.env.TAMAGUI_TARGET || 'web'
 
@@ -11,11 +10,12 @@ const boolVals = {
 }
 
 const disableExtraction =
-boolVals[process.env.DISABLE_EXTRACTION] ?? process.env.NODE_ENV === 'development'
+  boolVals[process.env.DISABLE_EXTRACTION] ??
+  process.env.NODE_ENV === 'development'
 
 const tamaguiOptions = {
   config: './tamagui.config.ts',
-  components: ['@tamagui/core', 'tamagui', '@my/ui'],
+  components: ['tamagui', '@yapster/ui'],
   importsWhitelist: ['constants.js', 'colors.js'],
   logTimings: true,
   disableExtraction,
@@ -23,19 +23,21 @@ const tamaguiOptions = {
     if (path.includes('packages/app')) {
       return true
     }
-  }
+  },
 }
 
 module.exports = {
   webpack: {
     alias: {
       'react-native$': 'react-native-web',
-      'react-native/Libraries/Renderer/shims/ReactFabric': '@tamagui/proxy-worm',
+      'react-native/Libraries/Renderer/shims/ReactFabric':
+        '@tamagui/proxy-worm',
     },
     resolve: {
       alias: {
         'react-native$': 'react-native-web',
-        'react-native/Libraries/Renderer/shims/ReactFabric': '@tamagui/proxy-worm',
+        'react-native/Libraries/Renderer/shims/ReactFabric':
+          '@tamagui/proxy-worm',
       },
     },
     plugins: [
@@ -52,7 +54,7 @@ module.exports = {
       }),
     ],
     mode: 'extends',
-    configure: { 
+    configure: {
       module: {
         rules: [
           {
@@ -66,7 +68,7 @@ module.exports = {
             ],
           },
         ],
-      }, 
-    }
+      },
+    },
   },
 }
